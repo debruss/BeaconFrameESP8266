@@ -1,5 +1,6 @@
-// ===== BeaconFrameESP8266 =====
-// Author: DeBruss
+// BeaconFrameESP8266
+// Year: 2020
+// Place: Quarantine
 
 
 /* 
@@ -19,11 +20,12 @@ extern "C" {
 }
 
 
-// === SETTINGS
-const int num_of_networks = 5;
+// === SETTINGS === 
+const int num_of_networks = 6;
 const bool use_random_mac = true;
 const char* ssids[num_of_networks] PROGMEM = // PROGMEM is just for fun :)
 {
+  "DeBruss",
   "It burns when IP",
   "NSA Surveillance Pigeon",
   "McDonald's Free WiFi",
@@ -36,25 +38,24 @@ const int MACAddresses[num_of_networks][6] =
   {random(256),random(256),random(256),random(256),random(256),random(256)},
   {random(256),random(256),random(256),random(256),random(256),random(256)},
   {random(256),random(256),random(256),random(256),random(256),random(256)},
+  {random(256),random(256),random(256),random(256),random(256),random(256)},
   {random(256),random(256),random(256),random(256),random(256),random(256)}
 };
 
 
 
 // Beacon Packet buffer 128
-uint8_t packet[128] = { 0x80, 0x00, 0x00, 0x00, 
-                /*4*/   0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 
-                /*10*/  0x01, 0x02, 0x03, 0x04, 0x05, 0x06,
-                /*16*/  0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 
-                /*22*/  0xc0, 0x6c, 
-                /*24*/  0x83, 0x51, 0xf7, 0x8f, 0x0f, 0x00, 0x00, 0x00, 
-                /*32*/  0x64, 0x00, 
-                /*34*/  0x01, 0x04, 
+// Look into: https://core.ac.uk/download/pdf/14699804.pdf
+uint8_t packet[128] = { 0x80, 0x00, 0x00, 0x00,                           // Frame Control
+                /*4*/   0xff, 0xff, 0xff, 0xff, 0xff, 0xff,               // Destination (but it is a broadcast)
+                /*10*/  0x01, 0x02, 0x03, 0x04, 0x05, 0x06,               // Source address
+                /*16*/  0x01, 0x02, 0x03, 0x04, 0x05, 0x06,               // Source address
+                /*22*/  0xc0, 0x6c,                                       // Fragment and sequence
+                /*24*/  0x83, 0x51, 0xf7, 0x8f, 0x0f, 0x00, 0x00, 0x00,   // Timestamp
+                /*32*/  0x64, 0x00,                                       // Interval
+                /*34*/  0x01, 0x04,                                       // Capabilities
                 /* SSID */
-                /*36*/  0x00, 0x0b, 0x72, 0x72, 0x72, 0x72, 0x72, 0x72, 0x72, 0x72, 0x72, 0x72, 0x72,
-                        0x01, 0x08, 0x82, 0x84,
-                        0x8b, 0x96, 0x24, 0x30, 0x48, 0x6c, 0x03, 0x01, 
-                /*61*/  0x04};         
+                /*36*/  0x00}; // More information is added in the build_beacon_packet() function         
 
 // For simplicity
 const uint8_t tail[] = {0x01, 0x08, 0x82, 0x84, 0x8b, 0x96, 0x24, 0x30, 0x48, 0x6c, 0x03, 0x01};              
