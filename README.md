@@ -1,5 +1,5 @@
 # BeaconFrameESP8266
-BeaconFrameESP8266 is a simple program for the ESP8266 that allows for a fast and easy setup to create network beacons with custom MAC addresses. It does not append spaces to a SSID to get to a length of 32. 
+BeaconFrameESP8266 is a simple program for the ESP8266 that allows for a fast and easy setup to create WiFi network beacons with (custom) MAC addresses. 
 
 ## Contribute
 In the case of any issues that might occur, please send them via the [Issues tab](https://github.com/debruss/BeaconFrameESP8266/issues). Also, pull requests with new/improved features are always welcome :) 
