@@ -57,7 +57,7 @@ uint8_t packet[128] = { 0x80, 0x00, 0x00, 0x00,                           // Fra
                 /* SSID */
                 /*36*/  0x00}; // More information is added in the build_beacon_packet() function         
 
-// For simplicity
+// Supported rates
 const uint8_t tail[] = {0x01, 0x08, 0x82, 0x84, 0x8b, 0x96, 0x24, 0x30, 0x48, 0x6c, 0x03, 0x01};              
 
 
