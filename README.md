@@ -15,5 +15,25 @@ This program depends on:
 4. If you have custom MAC Addresses, add them at: `const int MACAddresses`,
 5. Let's go...
 
+### Using and connecting an ESP8266 with a FTDI board
+Do __not__ power an ESP8266 with 5V, use 3.3V instead.
+
+__While programming:__
+
+__FTDI__ --> __ESP8266__<br>
+VCC --> VCC & EN<br>
+GND --> GND & GPIO0<br>
+RX  --> TX<br>
+TX  --> RX<br>
+<br>
+__While in normal operation:__
+
+__FTDI__ --> __ESP8266__<br>
+VCC --> VCC & EN<br>
+VCC --> ca. 10kOhm resistor --> GPIO0<br>
+GND --> GND<br>
+RX  --> TX<br>
+TX  --> RX<br>
+
 ## License
 This program is available under the [MIT License](https://github.com/debruss/BeaconFrameESP8266/blob/master/LICENSE).
