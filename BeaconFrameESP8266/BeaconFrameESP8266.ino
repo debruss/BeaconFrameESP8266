@@ -24,11 +24,11 @@ const int num_of_networks = 5;
 const bool use_random_mac = true;
 const char* ssids[num_of_networks] PROGMEM = // PROGMEM is just for fun :)
 {
-  "WiFi 1",
-  "WiFi 2",
-  "WiFi 3",
-  "WiFi 4",
-  "WiFi 5"
+  "It burns when IP",
+  "NSA Surveillance Pigeon",
+  "McDonald's Free WiFi",
+  "Shout \"MONKEY\" for password",
+  "NSA Surveillance Flower"
 };
 const int MACAddresses[num_of_networks][6] = 
 {
