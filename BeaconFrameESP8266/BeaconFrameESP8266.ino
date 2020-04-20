@@ -1,5 +1,5 @@
 // ===== BeaconFrameESP8266 =====
-// Made By: DeBruss
+// Author: DeBruss
 
 
 /* 
